@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- ВАЖНО: Добавлен атрибут fx:controller с полным путем к классу -->
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rsatu.ru.lr6.GymController"
+      prefHeight="600.0" prefWidth="800.0">
+
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+
+    <!-- Верхняя панель со статистикой -->
+    <HBox spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+        <Label fx:id="lblEmpCount" text="Сотрудников: 0"/>
+        <Label fx:id="lblEqCount" text="Оборудования: 0"/>
+        <Label fx:id="lblTotalValue" text="Общая стоимость: 0.00 руб."/>
+    </HBox>
+
+    <!-- Панель управления вкладками -->
+    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
+        <tabs>
+            <!-- Вкладка Сотрудники -->
+            <Tab text="Сотрудники" closable="false">
+                <VBox spacing="5">
+                    <HBox spacing="5">
+                        <Button onAction="#handleAddEmployee" text="Добавить сотрудника"/>
+                        <Button onAction="#handleDeleteEmployee" text="Удалить выбранного"/>
+                    </HBox>
+                    <TableView fx:id="tableEmployees" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colEmpInv" text="Инв. номер" prefWidth="100"/>
+                            <TableColumn fx:id="colEmpName" text="ФИО" prefWidth="200"/>
+                            <TableColumn fx:id="colEmpPos" text="Должность" prefWidth="150"/>
+                            <TableColumn fx:id="colEmpSal" text="Зарплата" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Вкладка Оборудование -->
+            <Tab text="Оборудование" closable="false">
+                <VBox spacing="5">
+                    <HBox spacing="5">
+                        <Button onAction="#handleAddEquipment" text="Добавить оборудование"/>
+                        <Button onAction="#handleDeleteEquipment" text="Удалить выбранное"/>
+                        <Button onAction="#handleChangeStatus" text="Изменить статус (Испр/Неиспр)"/>
+                        <Button onAction="#handleShowBroken" text="Показать только неисправные"/>
+                        <Button onAction="#handleShowAllEq" text="Показать все"/>
+                    </HBox>
+                    <TableView fx:id="tableEquipment" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colEqInv" text="Инв. номер" prefWidth="100"/>
+                            <TableColumn fx:id="colEqModel" text="Модель" prefWidth="200"/>
+                            <TableColumn fx:id="colEqManuf" text="Производитель" prefWidth="150"/>
+                            <TableColumn fx:id="colEqPrice" text="Цена" prefWidth="100"/>
+                            <TableColumn fx:id="colEqStatus" text="Статус" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>
