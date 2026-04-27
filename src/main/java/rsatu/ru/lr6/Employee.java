@@ -40,7 +40,7 @@ public class Employee extends Asset {
 
     @Override
     public String getStatusReport() {
-        return "Сотрудник: " + fullName + " (" + position + ") - Инв.номер: " + identificationNumber +
+        return "Сотрудник: " + fullName + " (" + position + ") - Таб.номер: " + identificationNumber +
                 " - З/п: " + String.format("%.2f", getCurrentValue()) + " руб.";
     }
 }
